@@ -1,7 +1,9 @@
+'use client';
+
 import { useTranslations } from '@/hooks/useTranslations';
 
 export default function NotFound() {
-  const t = useTranslations();
+  const { t } = useTranslations();
   
   return (
     <div className="min-h-screen flex items-center justify-center bg-background-base">

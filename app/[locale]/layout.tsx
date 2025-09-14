@@ -4,13 +4,15 @@ import { notFound } from 'next/navigation';
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export default async function LocaleLayout({
   children,
-  params: { locale }
+  params
 }: Props) {
+  const { locale } = await params;
+  
   // Validate that the incoming `locale` parameter is valid
   const validLocales = ['sv', 'en'];
   if (!validLocales.includes(locale)) {
