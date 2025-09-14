@@ -13,19 +13,19 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: "Is Your Website AI Ready?",
-  description: "UI components and design system for Firecrawl",
+  description: "AI readiness analysis tool for websites",
   icons: {
     icon: "/favicon.png",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
+};
+
+export default function RootLayout({ children }: Props) {
   return (
-    <html lang="en">
+    <html>
       <head>
         <ColorStyles />
       </head>

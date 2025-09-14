@@ -1,7 +1,11 @@
+'use client';
+
 import Link from "next/link";
 
 import { Connector } from "@/components/shared/layout/curvy-rect";
 import HeroFlame from "@/components/shared/effects/flame/hero-flame";
+import { useTranslations } from "@/hooks/useTranslations";
+import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 
 import HomeHeroBackground from "./Background/Background";
 import { BackgroundOuterPiece } from "./Background/BackgroundOuterPiece";
@@ -12,6 +16,8 @@ import HeroInput from "../hero-input/HeroInput";
 import HeroScraping from "../hero-scraping/HeroScraping";
 
 export default function HomeHero() {
+  const { t, locale } = useTranslations();
+
   return (
     <section className="overflow-x-clip" id="home-hero">
       <div
@@ -26,21 +32,16 @@ export default function HomeHero() {
         <HomeHeroBackground />
 
         <div className="relative container px-16">
+          <div className="absolute top-4 right-4 z-10">
+            <LanguageSwitcher currentLocale={locale} />
+          </div>
           <HomeHeroBadge />
           <HomeHeroTitle />
         </div>
 
+        <div className="container px-16">
           <p className="text-center text-body-large">
-            Power your AI apps with clean data crawled
-            <br className="lg-max:hidden" />
-            from any website.
-            <Link
-              className="bg-black-alpha-4 hover:bg-black-alpha-6 lg:ml-4 rounded-6 px-8 lg:px-6 text-label-large lg-max:py-2 h-30 lg:h-24 block lg-max:mt-8 lg-max:mx-auto lg-max:w-max lg:inline-block gap-4 transition-all"
-              href="https://github.com/firecrawl/firecrawl"
-              target="_blank"
-            >
-              It&apos;s also open source.
-            </Link>
+            {t('hero.description')}
           </p>
         </div>
       </div>

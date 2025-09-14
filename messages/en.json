@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "Is your website <br /> <span>AI Ready?</span>",
+    "description": "Analyze how AI-ready your webpage is from a single page snapshot. High-signal metrics for LLM compatibility."
+  },
+  "analysis": {
+    "headingHierarchy": "Heading Hierarchy",
+    "readability": "Readability",
+    "contentQuality": "Content Quality for AI",
+    "semanticHtml": "Semantic HTML",
+    "accessibility": "Accessibility",
+    "metaData": "Meta Data",
+    "analyzeAnother": "Analyze Another Site",
+    "runAnalysis": "Run Analysis",
+    "analyzing": "Analyzing...",
+    "enterUrl": "Enter URL to analyze",
+    "urlPlaceholder": "https://example.com"
+  },
+  "status": {
+    "pass": "Pass",
+    "fail": "Fail",
+    "warning": "Warning",
+    "excellent": "Excellent",
+    "good": "Good",
+    "needsImprovement": "Needs Improvement"
+  },
+  "errors": {
+    "invalidUrl": "Invalid URL. Please enter a valid web address.",
+    "analysisError": "An error occurred during analysis. Please try again.",
+    "networkError": "Network error. Please check your internet connection."
+  },
+  "ui": {
+    "language": "Language",
+    "swedish": "Svenska",
+    "english": "English"
+  }
+}

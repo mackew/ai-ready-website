@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "@/hooks/useTranslations";
+
 // import dynamic from "next/dynamic";
 // import { useRef, useEffect, forwardRef } from "react";
 
@@ -255,10 +257,16 @@ export const encryptText = (
 // });
 
 export default function HomeHeroTitle() {
+  const { t } = useTranslations();
+  
   return (
     <div className="text-title-h1 mx-auto text-center [&_span]:text-heat-100 mb-12 lg:mb-16">
-      Is your website <br />
-      <span>AI Ready?</span>
+      {t('hero.title').split(' ').map((word, index, array) => {
+        if (index === array.length - 1) {
+          return <span key={index}>{word}</span>;
+        }
+        return word + ' ';
+      })}
     </div>
   );
 }
