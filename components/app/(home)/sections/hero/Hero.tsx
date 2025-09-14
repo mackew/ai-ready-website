@@ -28,6 +28,7 @@ export default function HomeHero() {
         <div className="relative container px-16">
           <HomeHeroBadge />
           <HomeHeroTitle />
+        </div>
 
           <p className="text-center text-body-large">
             Power your AI apps with clean data crawled
