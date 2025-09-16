@@ -43,15 +43,15 @@ export default function StyleGuidePage() {
     checkKeys();
   }, []);
 
-  const handleAnalysis = async () => {
-    if (!url) return;
-    
+  const handleAnalysis = async (inputUrl: string) => {
+    if (!inputUrl) return;
+
     // Auto-prepend https:// if no protocol is provided
-    let processedUrl = url.trim();
+    let processedUrl = inputUrl.trim();
     if (!processedUrl.match(/^https?:\/\//i)) {
       processedUrl = 'https://' + processedUrl;
     }
-    
+
     // Validate URL format
     try {
       const urlObj = new URL(processedUrl);
@@ -65,11 +65,14 @@ export default function StyleGuidePage() {
       setUrlError('Please enter a valid URL (e.g., example.com)');
       return;
     }
-    
+
+    // Keep processed URL in local state so it can be displayed elsewhere
+    setUrl(processedUrl);
+
     setIsAnalyzing(true);
     setShowResults(false);
     setAnalysisData(null);
-    
+
     try {
       // Start basic analysis
       const basicAnalysisPromise = fetch('/api/ai-readiness', {
@@ -79,14 +82,14 @@ export default function StyleGuidePage() {
         },
         body: JSON.stringify({ url: processedUrl }),
       });
-      
+
       // Disable automatic AI analysis for now - user will click button
       let aiAnalysisPromise = null;
-      
+
       // Wait for basic analysis
       const response = await basicAnalysisPromise;
       const data = await response.json();
-      
+
       if (data.success) {
         setAnalysisData({
           ...data,
@@ -105,6 +108,11 @@ export default function StyleGuidePage() {
     }
   };
 
+  const handleHeroSubmit = (submittedUrl: string, selectedTab: Endpoint) => {
+    setTab(selectedTab);
+    handleAnalysis(submittedUrl);
+  };
+
   return (
     <HeaderProvider>
       <div className="min-h-screen bg-surface-primary text-text-primary">
@@ -120,7 +128,7 @@ export default function StyleGuidePage() {
         </HeaderWrapper>
 
         {/* Hero Section */}
-        <HomeHero />
+        <HomeHero onSubmit={handleHeroSubmit} />
 
         {/* Analysis Results */}
         <AnimatePresence>

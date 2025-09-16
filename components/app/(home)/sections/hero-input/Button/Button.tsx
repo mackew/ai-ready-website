@@ -7,12 +7,19 @@ import Button from "@/components/shared/button/Button";
 export default function HeroInputSubmitButton({
   tab,
   dirty,
+  onClick,
 }: {
   tab: string;
   dirty: boolean;
+  onClick?: () => void;
 }) {
   return (
-    <Button className="hero-input-button !p-0 bg-heat-100 hover:bg-heat-200" size="large" variant="primary">
+    <Button
+      className="hero-input-button !p-0 bg-heat-100 hover:bg-heat-200"
+      size="large"
+      variant="primary"
+      onClick={onClick}
+    >
       <AnimatedWidth>
         <AnimatePresence initial={false} mode="popLayout">
           <motion.div

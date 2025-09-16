@@ -14,8 +14,9 @@ import HomeHeroPixi from "./Pixi/Pixi";
 import HomeHeroTitle from "./Title/Title";
 import HeroInput from "../hero-input/HeroInput";
 import HeroScraping from "../hero-scraping/HeroScraping";
+import { Endpoint } from "@/components/shared/Playground/Context/types";
 
-export default function HomeHero() {
+export default function HomeHero({ onSubmit }: { onSubmit?: (url: string, tab: Endpoint) => void }) {
   const { t, locale } = useTranslations();
 
   return (
@@ -55,7 +56,7 @@ export default function HomeHero() {
         <Connector className="-bottom-10 -left-[10.5px] lg:hidden" />
         <Connector className="-bottom-10 -right-[10.5px] lg:hidden" />
 
-        <HeroInput />
+        <HeroInput onSubmit={onSubmit} />
       </div>
 
       <HeroScraping />

@@ -9,8 +9,13 @@ import HeroInputTabsMobile from "./Tabs/Mobile/Mobile";
 import HeroInputTabs from "./Tabs/Tabs";
 import AsciiExplosion from "@/components/shared/effects/flame/ascii-explosion";
 import { Endpoint } from "@/components/shared/Playground/Context/types";
+import React from "react";
 
-export default function HeroInput() {
+export interface HeroInputProps {
+  onSubmit?: (url: string, tab: Endpoint) => void;
+}
+
+export default function HeroInput({ onSubmit }: HeroInputProps) {
   const [tab, setTab] = useState<Endpoint>(Endpoint.Scrape);
   const [url, setUrl] = useState<string>("");
 
